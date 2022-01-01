@@ -1,11 +1,13 @@
 package com.wadocoder.BlueSearch.domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 public class User implements UserDetails{
+@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long userId;
 private String username;
 private String password;
@@ -26,12 +29,23 @@ private String email;
 private String phoneNumber;
 private String status;
 private String description;
-private Address address;
-private List<Post> posts;
-private List<Comment> comments;
-private List<Bid> bids;
 
-@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+private Address address;
+
+@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<Post> posts = new ArrayList<>();
+
+@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<Comment> comments = new ArrayList<>();
+
+@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<Bid> bids = new ArrayList<>();
+
+@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+private List<Authority> authorities = new ArrayList<>();
+
+
 public Long getUserId() {
 	return userId;
 }
@@ -86,9 +100,7 @@ public String getDescription() {
 public void setDescription(String description) {
 	this.description = description;
 }
-@OneToOne(mappedBy = "user",
-cascade = CascadeType.ALL,
-orphanRemoval = true)
+
 public Address getAddress() {
 	return address;
 }
@@ -96,7 +108,7 @@ public void setAddress(Address address) {
 	this.address = address;
 }
 
-@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+
 public List<Post> getPosts() {
 	return posts;
 }
@@ -104,7 +116,7 @@ public void setPosts(List<Post> posts) {
 	this.posts = posts;
 }
 
-@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+
 public List<Comment> getComments() {
 	return comments;
 }
@@ -112,7 +124,7 @@ public void setComments(List<Comment> comments) {
 	this.comments = comments;
 }
 
-@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+
 public List<Bid> getBids() {
 	return bids;
 }
@@ -140,10 +152,10 @@ public String toString() {
 			+ ", lastName=" + lastName + ", status=" + status + ", description=" + description + ", address=" + address
 			+ ", posts=" + posts + ", comments=" + comments + ", bids=" + bids + "]";
 }
+
 @Override
 public Collection<? extends GrantedAuthority> getAuthorities() {
-	
-	return null;
+    return authorities;
 }
 @Override
 public boolean isAccountNonExpired() {
@@ -160,6 +172,9 @@ public boolean isCredentialsNonExpired() {
 @Override
 public boolean isEnabled() {
 	return true;
+}
+public void setAuthorities(List<Authority> authorities) {
+	this.authorities = authorities;
 }
 
 }

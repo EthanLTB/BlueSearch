@@ -40,8 +40,7 @@ public LocalDateTime getCreatedDate() {
 public void setCreatedDate(LocalDateTime createdDate) {
 	this.createdDate = createdDate;
 }
-@ManyToOne
-@JoinColumn(name="user_id")
+
 public User getUser() {
 	return user;
 }

@@ -1,13 +1,10 @@
 package com.wadocoder.BlueSearch.domain;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -15,8 +12,11 @@ import org.springframework.security.core.GrantedAuthority;
 @Entity
 public class Authority implements GrantedAuthority {
 	private static final long serialVersionUID = 7712292587159620L;
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String authority;
+	@ManyToOne(optional = false)
+	@JoinColumn(name="user_id")
 	private User user;
 
 	public Authority() {
@@ -27,8 +27,7 @@ public class Authority implements GrantedAuthority {
 		this.authority = authority;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	public Long getId() {
 		return id;
 	}
@@ -37,7 +36,7 @@ public class Authority implements GrantedAuthority {
 		this.id = id;
 	}
 
-	@ManyToOne()
+	
 	public User getUser() {
 		return user;
 	}
@@ -51,12 +50,12 @@ public class Authority implements GrantedAuthority {
 	}
 
 	@Override
-	public List<GrantedAuthority> getAuthority() {
-		List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
-		roles.add(new Authority("ROLE_HOMEOWNER"));
-		return roles;
+	public String getAuthority() {
+		
+		return this.authority;
 	}
 
+	
 
 
 
