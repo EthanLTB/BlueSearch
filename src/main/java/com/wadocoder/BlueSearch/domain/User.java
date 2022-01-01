@@ -1,5 +1,6 @@
 package com.wadocoder.BlueSearch.domain;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,8 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Entity
-public class User {
+public class User implements UserDetails{
 private Long userId;
 private String username;
 private String password;
@@ -135,6 +139,27 @@ public String toString() {
 	return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", name=" + name
 			+ ", lastName=" + lastName + ", status=" + status + ", description=" + description + ", address=" + address
 			+ ", posts=" + posts + ", comments=" + comments + ", bids=" + bids + "]";
+}
+@Override
+public Collection<? extends GrantedAuthority> getAuthorities() {
+	
+	return null;
+}
+@Override
+public boolean isAccountNonExpired() {
+	return true;
+}
+@Override
+public boolean isAccountNonLocked() {
+	return true;
+}
+@Override
+public boolean isCredentialsNonExpired() {
+	return true;
+}
+@Override
+public boolean isEnabled() {
+	return true;
 }
 
 }
