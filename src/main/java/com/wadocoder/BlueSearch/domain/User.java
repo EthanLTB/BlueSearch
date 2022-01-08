@@ -1,25 +1,23 @@
 package com.wadocoder.BlueSearch.domain;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import javax.persistence.Table;
 
 @Entity
-public class User implements UserDetails{
-@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Table(name = "users")
+public class User {
+
+	
 private Long userId;
 private String username;
 private String password;
@@ -27,25 +25,13 @@ private String name;
 private String lastName;
 private String email;
 private String phoneNumber;
-private String status;
 private String description;
-
-@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 private Address address;
-
-@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 private List<Post> posts = new ArrayList<>();
-
-@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 private List<Comment> comments = new ArrayList<>();
-
-@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 private List<Bid> bids = new ArrayList<>();
 
-@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-private List<Authority> authorities = new ArrayList<>();
-
-
+@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 public Long getUserId() {
 	return userId;
 }
@@ -88,19 +74,14 @@ public String getPhoneNumber() {
 public void setPhoneNumber(String phoneNumber) {
 	this.phoneNumber = phoneNumber;
 }
-public String getStatus() {
-	return status;
-}
-public void setStatus(String status) {
-	this.status = status;
-}
+
 public String getDescription() {
 	return description;
 }
 public void setDescription(String description) {
 	this.description = description;
 }
-
+@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 public Address getAddress() {
 	return address;
 }
@@ -108,7 +89,7 @@ public void setAddress(Address address) {
 	this.address = address;
 }
 
-
+@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 public List<Post> getPosts() {
 	return posts;
 }
@@ -116,7 +97,7 @@ public void setPosts(List<Post> posts) {
 	this.posts = posts;
 }
 
-
+@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 public List<Comment> getComments() {
 	return comments;
 }
@@ -124,7 +105,7 @@ public void setComments(List<Comment> comments) {
 	this.comments = comments;
 }
 
-
+@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 public List<Bid> getBids() {
 	return bids;
 }
@@ -146,35 +127,8 @@ public boolean equals(Object obj) {
 	User other = (User) obj;
 	return Objects.equals(userId, other.userId);
 }
-@Override
-public String toString() {
-	return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", name=" + name
-			+ ", lastName=" + lastName + ", status=" + status + ", description=" + description + ", address=" + address
-			+ ", posts=" + posts + ", comments=" + comments + ", bids=" + bids + "]";
-}
 
-@Override
-public Collection<? extends GrantedAuthority> getAuthorities() {
-    return authorities;
-}
-@Override
-public boolean isAccountNonExpired() {
-	return true;
-}
-@Override
-public boolean isAccountNonLocked() {
-	return true;
-}
-@Override
-public boolean isCredentialsNonExpired() {
-	return true;
-}
-@Override
-public boolean isEnabled() {
-	return true;
-}
-public void setAuthorities(List<Authority> authorities) {
-	this.authorities = authorities;
-}
+
+
 
 }

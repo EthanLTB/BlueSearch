@@ -12,8 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "posts")
 public class Post {
 private Long postId;
 private String jobDescription;
@@ -40,7 +42,8 @@ public LocalDateTime getCreatedDate() {
 public void setCreatedDate(LocalDateTime createdDate) {
 	this.createdDate = createdDate;
 }
-
+@ManyToOne
+@JoinColumn(name="user_id")
 public User getUser() {
 	return user;
 }

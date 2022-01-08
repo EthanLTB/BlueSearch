@@ -7,6 +7,6 @@ import com.wadocoder.BlueSearch.domain.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	Optional<User> findByUsername(String username);
+	User findByUsername(String username);
 
 }
