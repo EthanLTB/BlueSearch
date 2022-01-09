@@ -1,11 +1,14 @@
 package com.wadocoder.BlueSearch.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
 	
@@ -30,6 +33,9 @@ private Address address;
 private List<Post> posts = new ArrayList<>();
 private List<Comment> comments = new ArrayList<>();
 private List<Bid> bids = new ArrayList<>();
+private Set<Authorities> authorities = new HashSet<>();
+
+
 
 @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 public Long getUserId() {
@@ -111,6 +117,14 @@ public List<Bid> getBids() {
 }
 public void setBids(List<Bid> bids) {
 	this.bids = bids;
+}
+public void setAuthorities(Set<Authorities> authorities) {
+	this.authorities = authorities;
+}
+@OneToMany( fetch=FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+public Set<Authorities> getAuthorities() {
+
+	return authorities;
 }
 @Override
 public int hashCode() {

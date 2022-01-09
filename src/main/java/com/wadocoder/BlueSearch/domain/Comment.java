@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "comments")
+@Table(name = "comment")
 public class Comment {
 private Long commentId;
 private String commentDetails;

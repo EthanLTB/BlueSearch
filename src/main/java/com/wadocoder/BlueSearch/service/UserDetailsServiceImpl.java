@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.wadocoder.BlueSearch.domain.User;
 import com.wadocoder.BlueSearch.repository.UserRepository;
+import com.wadocoder.BlueSearch.security.SecurityUser;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
@@ -19,7 +20,11 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		User user = userRepo.findByUsername(username);
-		return null;
+		
+		if(user == null) {
+			throw new UsernameNotFoundException("Username and/or Password does not exist");
+		}
+		return new SecurityUser(user);
 	}
 
 }

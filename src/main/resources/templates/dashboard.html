@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head>
-<title>Welcome</title>
-</head>
-<body>
-<h1>Dashboard</h1>
+<title>BlueSearch/Home</title>
 
+</head>
+<body >
+<h1>Home</h1>
+
+<h4>What do you need done?</h4>
+<form method="post" action="/createPost">
+<!--  <input type= "hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/> -->
+<textarea name="jobDescription" id="createPostBox" rows="4" cols="50" th:field=${post.jobDescription}></textarea>
+ <button type="submit">Post Job</button>
+</form>
+
+<div id="jobBoard">
+
+</div>
+
+
+<form method="post" action="/logout">
+<!--  <input type= "hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/> -->
+<button type="submit">Logout</button>
+</form>
+<script type="text/javascript" src="/JS/dashboard.js"></script>
 </body>
 </html>

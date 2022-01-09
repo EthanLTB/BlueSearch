@@ -24,10 +24,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 @Override
 protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	auth.userDetailsService(userDetailsService)
-	.passwordEncoder(passwordEncoder)
-	.withUser("Ethan123")
-	.password("$2a$10$nGEj.FPIoobX706NB9nu.OfL7CI28XrazvvfaHrY0NkhenBtFxnke")
-	.roles("HOMEOWNER", "TRADESPERSON");
+	.passwordEncoder(passwordEncoder);
+//	.withUser("Ethan123")
+//	.password("$2a$10$nGEj.FPIoobX706NB9nu.OfL7CI28XrazvvfaHrY0NkhenBtFxnke")
+//	.roles("HOMEOWNER", "TRADESPERSON");
 }
 
 @Override
@@ -35,8 +35,8 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		http
 		.csrf().disable()
 		.authorizeRequests()
-		.antMatchers("/tradesperson/**").hasAnyRole("TRADESPERSON")
-		.anyRequest().hasAnyRole("HOMEOWNER").and()
+		.antMatchers("/dashboard").hasAnyRole("HOMEOWNER")
+		.and()
 		.formLogin()
 		.loginPage("/login")
 		.defaultSuccessUrl("/dashboard")
