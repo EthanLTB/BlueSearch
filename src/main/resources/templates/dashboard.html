@@ -14,15 +14,22 @@
  <button type="submit">Post Job</button>
 </form>
 
-<div id="jobBoard">
 
-</div>
-
+<div th:each="post : ${posts}">
+		<br /> <a th:href="@{/profile/{userId}(userId=${post.user.userId})}" th:text="${post.user.username}"></a><br />
+		<span th:text="${post.jobDescription}"></span><br /> <span
+			th:text="${post.createdDate}"></span>
+		<div th:if="${user.userId == post.user.userId}">
+		<form method="post" action="/deletePost/{postId}">
+		<button type="submit" >Delete</button>
+		</form>
+		</div>
+		</div>
 
 <form method="post" action="/logout">
 <!--  <input type= "hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/> -->
 <button type="submit">Logout</button>
 </form>
-<script type="text/javascript" src="/JS/dashboard.js"></script>
+
 </body>
 </html>
