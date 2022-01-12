@@ -29,7 +29,7 @@ public class LoginController {
 	
 	@PostMapping("/register")
 	public String createUser(User user) {
-		userService.saveUser(user);
+		userService.createUser(user);
 		
 		return "redirect:/login";
 	}

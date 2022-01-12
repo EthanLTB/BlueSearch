@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,7 +52,7 @@ public void setUser(User user) {
 	this.user = user;
 }
 
-@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+@OneToMany(  mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
 public List<Comment> getComments() {
 	return comments;
 }

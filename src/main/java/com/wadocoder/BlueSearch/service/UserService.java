@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.wadocoder.BlueSearch.domain.Address;
 import com.wadocoder.BlueSearch.domain.Authorities;
 import com.wadocoder.BlueSearch.domain.User;
 import com.wadocoder.BlueSearch.repository.AuthoritiesRepository;
@@ -17,20 +18,39 @@ public class UserService {
 	private AuthoritiesRepository authorityRepo;
 	@Autowired
 	private UserRepository userRepo;
+//	@Autowired
+//	private AddressRepository addressRepo;
 	
-	public void saveUser(User user) {
+	public void createUser(User user) {
 		Authorities authority = new Authorities();
+		Address address = new Address();
+		address.setUser(user);
+		address.setUserId(user.getUserId());
 		authority.setUser(user);
 		authority.setAuthority("ROLE_HOMEOWNER");
 		String encryptedPassword = passwordEncoder.encode(user.getPassword());
+		user.setAddress(address);
 		user.setPassword(encryptedPassword);
 		userRepo.save(user);
 		authorityRepo.save(authority);
 	}
-
-	public Object findById(Long userId) {
-		
+	
+	public void updateUserProfile(User user) {
+	    
+		userRepo.save(user);
+	}
+	
+	public User findByUserId(Long userId) {
 		return userRepo.findByUserId(userId);
 	}
+
+	public User findByIdAndAddressWithPosts(Long userId) {
+		
+		return userRepo.findByIdAndAddressWithPosts(userId);
+	}
+
+
+
+
 
 }

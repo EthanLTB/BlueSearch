@@ -95,7 +95,7 @@ public void setAddress(Address address) {
 	this.address = address;
 }
 
-@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+@OneToMany( mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 public List<Post> getPosts() {
 	return posts;
 }
@@ -103,7 +103,7 @@ public void setPosts(List<Post> posts) {
 	this.posts = posts;
 }
 
-@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+@OneToMany( mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 public List<Comment> getComments() {
 	return comments;
 }
@@ -111,7 +111,7 @@ public void setComments(List<Comment> comments) {
 	this.comments = comments;
 }
 
-@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+@OneToMany( mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 public List<Bid> getBids() {
 	return bids;
 }

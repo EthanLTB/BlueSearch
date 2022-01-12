@@ -11,6 +11,12 @@ public interface UserRepository extends JpaRepository<User, Long>{
 	   " where u.username = :username")
 	User findByUsername(String username);
 
-Object findByUserId(Long userId);
+@Query("select u from User u" + " left join fetch u.address"
+		+ " left join fetch u.posts"
+		+ " where u.userId = :userId")
+User findByIdAndAddressWithPosts(Long userId);
+
+User findByUserId(Long userId);
+
 
 }

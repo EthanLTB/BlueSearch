@@ -14,5 +14,10 @@ class BlueSearchApplicationTests {
 		String encodedPassword = passwordEncoder.encode("123123");
 		System.out.println(encodedPassword);
 	}
+	@Test
+	void unencode() {
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		System.out.println(passwordEncoder.matches("poop", "$2a$10$QDXMlYm5lhODIwkrhlpdA.hlcBkILuY8GmBz/AI0aLyd90EGQI3MC"));
+	}
 
 }

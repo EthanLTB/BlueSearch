@@ -5,7 +5,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import com.wadocoder.BlueSearch.domain.Post;
 import com.wadocoder.BlueSearch.domain.User;
@@ -29,12 +28,7 @@ public class DashboardController {
 		return "dashboard";
 	}
 	
-	@PostMapping("/createPost")
-	public String createPost(@AuthenticationPrincipal User user, Post post) {
-		System.out.println("Creating post");
-		 postService.createPost(user, post);
-		 return "redirect:/dashboard";
-	}
+
 	
 
 }
