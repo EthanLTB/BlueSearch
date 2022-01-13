@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 
 import com.wadocoder.BlueSearch.domain.Address;
 import com.wadocoder.BlueSearch.domain.Authorities;
+import com.wadocoder.BlueSearch.domain.Post;
 import com.wadocoder.BlueSearch.domain.User;
 import com.wadocoder.BlueSearch.repository.AuthoritiesRepository;
+import com.wadocoder.BlueSearch.repository.PostRepository;
 import com.wadocoder.BlueSearch.repository.UserRepository;
 
 @Service
@@ -18,8 +20,8 @@ public class UserService {
 	private AuthoritiesRepository authorityRepo;
 	@Autowired
 	private UserRepository userRepo;
-//	@Autowired
-//	private AddressRepository addressRepo;
+	@Autowired
+	private PostRepository postRepo;
 	
 	public void createUser(User user) {
 		Authorities authority = new Authorities();
@@ -47,6 +49,12 @@ public class UserService {
 	public User findByIdAndAddressWithPosts(Long userId) {
 		
 		return userRepo.findByIdAndAddressWithPosts(userId);
+	}
+
+	public User getUserByPostId(Long postId) {
+		Post post = postRepo.findByPostId(postId);
+		User user = userRepo.findByUserId(post.getUser().getUserId());
+		return user;
 	}
 
 

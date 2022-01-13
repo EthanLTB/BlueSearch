@@ -19,12 +19,14 @@
 		<br /> <a th:href="@{/profile/{userId}(userId=${post.user.userId})}" th:text="${post.user.username}"></a><br />
 		<span th:text="${post.jobDescription}"></span><br /> <span
 			th:text="${post.createdDate}"></span>
-			<input type="text" name="commentInput" id="commentBox">
-		<button id="commentBtn">Comment</button>
+			<input type="text" name="commentInput" class="commentBox">
+		<button class="commentBtn">Comment</button>
+	
 		<div th:if="${user.userId == post.user.userId}">
 		<form method="post" th:action="@{/dashboard/{postId}/delete(postId=${post.postId})}">
 		<button type="submit" >Delete</button>
 		</form>
+		<a th:href="@{/post/{postId}(postId=${post.postId})}" th:text="Comment"></a>
 		</div>
 		</div>
 
@@ -32,6 +34,6 @@
 <!--  <input type= "hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/> -->
 <button type="submit">Logout</button>
 </form>
-<script type="text/javascript" src="../static/JS/dashboard.js"></script>
+<script type="text/javascript" th:inline="javascript" src="/JS/dashboard.js"></script>
 </body>
 </html>

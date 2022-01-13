@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>Post</title>
+
+</head>
+<body>
+<br /> <a th:href="@{/profile/{userId}(userId=${post.user.userId})}" th:text="${post.user.username}"></a><br />
+<span th:text="${post.jobDescription}"></span><br /> <span
+			th:text="${post.createdDate}"></span>
+			<br/>
+			<input type="text" name="commentInput" id="commentBox">
+			
+			<div th:each="comment : ${comments}">
+			<a th:href="@{/profile/{userId}(userId=${comment.user.userId})}" th:text="${comment.user.username}"></a>
+			<span th:text="${comment.commentDetails}"></span>
+			<span th:text="${comment.createdDate}"></span>
+			</div>
+			
+</body>
+<script th:inline="javascript">
+var userId = /*[[${currentUser.userId}]]*/ ''
+var postId = /*[[${post.postId}]]*/ ''
+</script>
+<script type="text/javascript" src="/JS/post.js"></script>
+</html>

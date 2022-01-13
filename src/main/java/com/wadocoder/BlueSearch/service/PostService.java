@@ -38,4 +38,9 @@ public class PostService {
 		postRepo.deleteById(postId);
 		
 	}
+
+	public Post findById(Long postId) {
+	
+		return postRepo.findByPostId(postId);
+	}
 }
