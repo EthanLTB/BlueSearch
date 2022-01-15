@@ -30,6 +30,7 @@ private String email;
 private String phoneNumber;
 private String description;
 private Address address;
+private Boolean hasTrade;
 private List<Post> posts = new ArrayList<>();
 private List<Comment> comments = new ArrayList<>();
 private List<Bid> bids = new ArrayList<>();
@@ -125,6 +126,14 @@ public void setAuthorities(Set<Authorities> authorities) {
 public Set<Authorities> getAuthorities() {
 
 	return authorities;
+}
+
+
+public Boolean getHasTrade() {
+	return hasTrade;
+}
+public void setHasTrade(Boolean hasTrade) {
+	this.hasTrade = hasTrade;
 }
 @Override
 public int hashCode() {

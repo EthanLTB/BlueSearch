@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.wadocoder.BlueSearch.domain.User;
+import com.wadocoder.BlueSearch.dto.Trade;
 import com.wadocoder.BlueSearch.service.UserService;
 
 @Controller
@@ -24,11 +25,12 @@ public class LoginController {
 	@GetMapping("/register")
 	public String getRegister(ModelMap model) {
 		model.put("user", new User());
+		
 		return "register";
 	}
 	
 	@PostMapping("/register")
-	public String createUser(User user) {
+	public String createUser(User user ) {
 		userService.createUser(user);
 		
 		return "redirect:/login";

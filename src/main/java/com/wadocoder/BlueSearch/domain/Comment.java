@@ -72,11 +72,8 @@ public boolean equals(Object obj) {
 	Comment other = (Comment) obj;
 	return Objects.equals(commentId, other.commentId);
 }
-@Override
-public String toString() {
-	return "Comment [commentId=" + commentId + ", commentDetails=" + commentDetails + ", createdDate=" + createdDate
-			+ ", user=" + user + ", post=" + post + "]";
-}
+
+
 
 
 }

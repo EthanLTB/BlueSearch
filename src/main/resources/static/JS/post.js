@@ -1,7 +1,9 @@
 var commentBox = document.getElementById("commentBox")
 		console.log(commentBox)
 		
-		
+		window.onload = function() {
+  commentBox.focus();
+};
 
 commentBox.addEventListener("keypress", submitOnEnter);
 
@@ -24,7 +26,9 @@ commentBox.addEventListener("keypress", submitOnEnter);
 					},
 					body: JSON.stringify(comment)
 
-				}).then(response => response.json);
+				}).then(response => response.json).then(() => {
+					window.location.reload();
+				});
 
 				return false;
 			}

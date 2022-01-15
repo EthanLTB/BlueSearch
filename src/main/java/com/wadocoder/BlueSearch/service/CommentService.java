@@ -1,8 +1,8 @@
 package com.wadocoder.BlueSearch.service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,14 +35,17 @@ private CommentRepository commentRepo;
 		newComment.setUser(userRepo.findByUserId(comment.getUserId()));
 		newComment.setPost(postRepo.findByPostId(comment.getPostId()));
 		newComment.setCreatedDate(LocalDateTime.now());
-		
+		System.out.println(newComment.toString());
 		commentRepo.save(newComment);
 	}
 
 
 	public List<Comment> findAllByPost(Long postId) {
 		Post post = postRepo.findByPostId(postId);
-		return commentRepo.findAllByPost(post);
+		List<Comment> comments = commentRepo.findAllByPost(post);
+//		List<Comment> commentsDesc =  comments.stream().collect(Collectors.toList());
+		 Collections.reverse(comments);
+		return comments;
 	}
 	
 

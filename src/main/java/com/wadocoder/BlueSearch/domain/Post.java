@@ -74,11 +74,8 @@ public boolean equals(Object obj) {
 	Post other = (Post) obj;
 	return Objects.equals(postId, other.postId);
 }
-@Override
-public String toString() {
-	return "Post [postId=" + postId + ", jobDescription=" + jobDescription + ", createdDate=" + createdDate + ", user="
-			+ user + ", comments=" + comments + "]";
-}
+
+
 
 
 }
