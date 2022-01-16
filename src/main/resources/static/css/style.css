@@ -1,11 +1,87 @@
-.postContainer{
-	 border: 2px solid #ccc;
-  padding: 10px;
-  width: 30em;
-	
-	
-	background-color: light-blue;
+.postContainer {
+	border: 2px solid #ccc;
+	padding: 10px;
+	width: 30em;
+	background-color: white; margin-top : 10px;
+	padding-top: 2px;
+	margin-top: 10px;
 }
-#newPostSection{
-  text-align: center;
+.commentSection{
+ padding : 10px;
+	width: 30em;
+	
+	margin-top: 10px;
+	padding-top: 10px;
+	padding: 10px;
+}
+.action{
+	margin-left:15px;
+	color:#0645AD;
+}
+.login{
+	text-align:center;
+}
+.delete-button{
+	border:none;
+	font-size: small;
+	
+}
+.post-actions{
+	display:flex;
+	font-size: small;
+	padding-top:5px;
+	margin-bottom:none;
+	
+}
+.commentBox {
+	border: 2px solid #ccc; padding : 10px;
+	width: 30em;
+	background-color: white;
+	margin-top: 10px;
+	padding-top: 10px;
+	padding: 10px;
+}
+.date{
+	font-size:small;
+}
+
+.post-page {
+	text-align: center;
+}
+
+
+#newPostSection {
+	text-align: center;
+}
+
+body {
+	background-color: #C8E7F5;
+}
+
+.navbar {
+	background-color: #0671B7;
+}
+
+.nav-text {
+	color: white;
+}
+
+.logout-button {
+	color: white;
+	background-color: #0671B7;
+	border: none;
+}
+
+.post-text {
+	word-wrap: break-word;
+}
+
+.a-tag {
+	text-decoration: none;
+	
+}
+
+.name-link {
+	color: black;
+	text-decoration: none;
 }

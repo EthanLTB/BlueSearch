@@ -47,6 +47,20 @@ private CommentRepository commentRepo;
 		 Collections.reverse(comments);
 		return comments;
 	}
+
+
+	public void deleteById(Long commentId) {
+		commentRepo.deleteById(commentId);
+		
+	}
+
+
+	public Comment findByCommentId(Long commentId) {
+		
+		return commentRepo.findByCommentId(commentId);
+	}
+
+
 	
 
 }
