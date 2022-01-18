@@ -8,7 +8,6 @@ import com.wadocoder.BlueSearch.domain.Address;
 import com.wadocoder.BlueSearch.domain.Authorities;
 import com.wadocoder.BlueSearch.domain.Post;
 import com.wadocoder.BlueSearch.domain.User;
-import com.wadocoder.BlueSearch.dto.Trade;
 import com.wadocoder.BlueSearch.repository.AuthoritiesRepository;
 import com.wadocoder.BlueSearch.repository.PostRepository;
 import com.wadocoder.BlueSearch.repository.UserRepository;

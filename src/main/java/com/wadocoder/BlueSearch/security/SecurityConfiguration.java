@@ -33,7 +33,6 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 @Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		.csrf().disable()
 		.authorizeRequests()
 		.antMatchers("/dashboard").hasAnyRole("HOMEOWNER")
 		.antMatchers("/profile").hasAnyRole("HOMEOWNER")

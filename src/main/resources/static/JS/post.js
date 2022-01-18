@@ -28,6 +28,7 @@ function submitOnEnter(event) {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
+				'X-CSRF-TOKEN': token
 			},
 			body: JSON.stringify(comment)
 

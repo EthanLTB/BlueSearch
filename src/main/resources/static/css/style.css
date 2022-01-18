@@ -1,12 +1,23 @@
 .postContainer {
 	border: 2px solid #ccc;
-	
+	border-radius:10px;
 	padding: 10px;
 	width: 30em;
 	background-color: white; margin-top : 10px;
 	padding-top: 2px;
 	margin-top: 10px;
 }
+/* label{ */
+/*     display: inline-block; */
+/*     float: left; */
+/*     clear: left; */
+/*     width: 250px; */
+/*     text-align: right; */
+/* } */
+/* input { */
+/*   display: inline-block; */
+/*   float: left; */
+/* } */
 .commentSection{
  padding : 10px;
 	width: 30em;
@@ -14,6 +25,10 @@
 	margin-top: 10px;
 	padding-top: 10px;
 	padding: 10px;
+}
+.input-box{
+	border-radius:10px;
+	margin-bottom:10px;
 }
 .action{
 	margin-left:15px;
@@ -33,6 +48,10 @@
 	padding-top:5px;
 	margin-bottom:none;
 	
+}
+
+.comment{
+	padding-top:20px;
 }
 .commentBox {
 	border: 2px solid #ccc; padding : 10px;

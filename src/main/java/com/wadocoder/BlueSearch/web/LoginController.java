@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.wadocoder.BlueSearch.domain.User;
-import com.wadocoder.BlueSearch.dto.Trade;
 import com.wadocoder.BlueSearch.service.UserService;
 
 @Controller
