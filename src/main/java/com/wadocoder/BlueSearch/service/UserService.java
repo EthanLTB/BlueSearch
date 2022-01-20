@@ -42,6 +42,7 @@ public class UserService {
 		else if(user.getHasTrade() == true) {
 			Authorities authority2 = new Authorities();
 			authority2.setAuthority("ROLE_TRADESPERSON");
+			authority2.setUser(user);
 			authorityRepo.save(authority2);
 		} 
 		

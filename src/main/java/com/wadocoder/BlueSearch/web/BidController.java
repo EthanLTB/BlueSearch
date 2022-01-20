@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.wadocoder.BlueSearch.domain.User;
+import com.wadocoder.BlueSearch.dto.BidDto;
 import com.wadocoder.BlueSearch.service.PostService;
 import com.wadocoder.BlueSearch.service.UserService;
 
@@ -23,6 +24,7 @@ public class BidController {
 		model.put("currentUser", user);
 		model.put("post", postService.findById(postId));
 		model.put("otherUser", userService.getUserByPostId(postId));
+		model.put("bid", new BidDto());
 		return "bid";
 	}
 }

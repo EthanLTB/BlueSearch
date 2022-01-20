@@ -64,7 +64,10 @@
 .date{
 	font-size:small;
 }
-
+.form-align{
+	text-align:right; 
+	margin-right:4em;
+}
 .post-page {
 	text-align: center;
 }
@@ -85,11 +88,17 @@ body {
 .nav-text {
 	color: white;
 }
+.nav-text:hover{
+	color:orange;
+}
 
 .logout-button {
 	color: white;
 	background-color: #0671B7;
 	border: none;
+}
+.logout-button:hover{
+	color:orange;
 }
 
 .post-text {

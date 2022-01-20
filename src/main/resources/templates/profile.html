@@ -30,7 +30,7 @@
 		<div class="container-fluid postContainer">
 			<h1 style="text-align:center;">Update your profile</h1>
 <div class= >
-			<form action="" method="post" style="text-align:right; margin-right:4em;">
+			<form action="" method="post" class="form-align">
 			 <input type= "hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 				<div>
 					<label>Username:</label> <input class="input-box" type="text" th:field="${otherUser.username}" />
@@ -65,17 +65,17 @@
 						th:field="${otherUser.address.addressLine1}" />
 				</div>
 				<div>
-					<label>Address Line 2:</label>Address Line 2: <input class="input-box" type="text"
+					<label>Address Line 2:</label> <input class="input-box" type="text"
 						th:field="${otherUser.address.addressLine2}" />
 				</div>
 				<div>
-					<label>City:</label> <input class="input-box" type="text" th:field="${otherUser.address.city}" />
+					<label>City: </label> <input class="input-box" type="text" th:field="${otherUser.address.city}" />
 				</div>
 				<div>
-					<label>Region:</label> <input class="input-box" type="text" th:field="${otherUser.address.region}" />
+					<label>Region: </label> <input class="input-box" type="text" th:field="${otherUser.address.region}" />
 				</div>
 				<div>
-					<label>Country:</label> <input class="input-box" type="text" th:field="${otherUser.address.country}" />
+					<label>Country: </label> <input class="input-box" type="text" th:field="${otherUser.address.country}" />
 				</div>
 				<div>
 					<label>Zip Code:</label> <input class="input-box" type="text"
